@@ -7,6 +7,7 @@ Database		Firebird
 
 Create Table produto  (
 	cproduto Integer NOT NULL,
+    imagem Varchar(255) NOT NULL,
 	preco Numeric(18,2) NOT NULL,
 	caracteristicas blob sub_type 0 segment size 1200 NOT NULL,
 	desconto Numeric(3,2) NOT NULL,
