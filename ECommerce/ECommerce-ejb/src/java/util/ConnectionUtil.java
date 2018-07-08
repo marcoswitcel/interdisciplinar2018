@@ -6,9 +6,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-/**
- * @author joaomarcos
- */
 
 public class ConnectionUtil {
     public static Connection getConnection() throws Exception {

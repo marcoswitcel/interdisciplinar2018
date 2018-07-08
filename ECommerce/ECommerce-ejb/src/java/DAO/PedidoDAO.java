@@ -1,5 +1,6 @@
 package DAO;
 
+import DTO.PedidoDTO;
 import java.sql.Connection;
 import model.Pedido;
 import util.ConnectionUtil;
@@ -14,7 +15,12 @@ public class PedidoDAO {
         connection = ConnectionUtil.getConnection();
     }
     
-    public void save(Pedido pedido) {
+    public int save(PedidoDTO pedido) {
+        int cpedido = 0;
+       
         // @TODO insere pedido
+       
+        return cpedido;
+        
     }
 }
