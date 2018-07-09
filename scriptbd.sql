@@ -44,7 +44,7 @@ Create Table subcategoria  (
  Primary Key (csubcategoria)
 );
 
-Create Table subcagetoriaproduto  (
+Create Table subcategoriaproduto  (
 	csubcategoria Integer NOT NULL,
 	cproduto Integer NOT NULL
 );
@@ -64,12 +64,12 @@ Create Table marca  (
  Primary Key (cmarca)
 );
 
-Alter Table subcagetoriaproduto add Foreign Key (cproduto) references produto (cproduto) on update no action on delete no action ;
+Alter Table subcategoriaproduto add Foreign Key (cproduto) references produto (cproduto) on update no action on delete no action ;
 Alter Table produtopedido add Foreign Key (cproduto) references produto (cproduto) on update no action on delete no action ;
 Alter Table pedido add Foreign Key (cpf) references cliente (cpf) on update no action on delete no action ;
 Alter Table produtopedido add Foreign Key (cpedido) references pedido (cpedido) on update no action on delete no action ;
 Alter Table subcategoria add Foreign Key (ccategoria) references categoria (ccategoria) on update no action on delete no action ;
-Alter Table subcagetoriaproduto add Foreign Key (csubcategoria) references subcategoria (csubcategoria) on update no action on delete no action ;
+Alter Table subcategoriaproduto add Foreign Key (csubcategoria) references subcategoria (csubcategoria) on update no action on delete no action ;
 Alter Table produto add Foreign Key (cmarca) references marca (cmarca) on update no action on delete no action ;
 
 Create Table Adm  (
