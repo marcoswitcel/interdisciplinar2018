@@ -18,12 +18,31 @@ public class ProdutoDAO {
         connection = ConnectionUtil.getConnection();
     }
     
-    public ProdutoDTO findById(int cproduto) {
+    public ProdutoDTO findById(int cproduto) throws Exception {
         ProdutoDTO produto = null;
+
+        PreparedStatement ps = connection.prepareStatement(
+            "SELECT * FROM PRODUTO WHERE cproduto = ?"
+        );
+        ps.setInt(1, cproduto);
         
-        // @TODO lógica 
+        ResultSet rs = ps.executeQuery();
         
-        return produto; 
+        if (rs.next()) {
+            produto = new ProdutoDTO();
+            produto.setImagem(rs.getString("IMAGEM"));
+            produto.setPreco(rs.getDouble("PRECO"));
+            produto.setCaracteristicas(rs.getString("CARACTERISTICAS"));
+            produto.setDesconto(rs.getDouble("DESCONTO"));
+            produto.setQuantidade(rs.getInt("QUANTIDADE"));
+            MarcaDTO marca = new MarcaDTO();
+            marca.setCmarca(rs.getInt("CMARCA"));
+            produto.setCmarca(marca);
+        }
+        
+        rs.close();
+        
+        return produto;
     }
     
     public List<ProdutoDTO> findAll() throws Exception {

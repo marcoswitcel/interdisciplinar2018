@@ -7,7 +7,7 @@ public class ProdutoPedidoDTO implements Serializable {
     private PedidoDTO cpedido;
     private int quantidade;
     private double preco;
-    private double descont;
+    private double desconto;
 
     public ProdutoDTO getCproduto() {
         return cproduto;
@@ -16,7 +16,7 @@ public class ProdutoPedidoDTO implements Serializable {
     public void setCproduto(ProdutoDTO cproduto) {
         this.cproduto = cproduto;
     }
-
+    
     public PedidoDTO getCpedido() {
         return cpedido;
     }
@@ -41,11 +41,11 @@ public class ProdutoPedidoDTO implements Serializable {
         this.preco = preco;
     }
 
-    public double getDescont() {
-        return descont;
+    public double getDesconto() {
+        return desconto;
     }
 
-    public void setDescont(double descont) {
-        this.descont = descont;
+    public void setDesconto(double descont) {
+        this.desconto = descont;
     }
 }

@@ -3,8 +3,10 @@ package DTO;
 import java.io.Serializable;
 
 public class ProdutoDTO implements Serializable {
-    private int cproduto; 
+
+    private int cproduto;
     private double preco;
+    private String imagem;
     private String caracteristicas;
     private double desconto;
     private int quantidade;
@@ -16,6 +18,14 @@ public class ProdutoDTO implements Serializable {
 
     public void setCproduto(int cproduto) {
         this.cproduto = cproduto;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public double getPreco() {

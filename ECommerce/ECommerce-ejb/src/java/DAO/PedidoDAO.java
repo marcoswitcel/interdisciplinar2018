@@ -2,6 +2,9 @@ package DAO;
 
 import DTO.PedidoDTO;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Timestamp;
 import model.Pedido;
 import util.ConnectionUtil;
 /**
@@ -15,10 +18,23 @@ public class PedidoDAO {
         connection = ConnectionUtil.getConnection();
     }
     
-    public int save(PedidoDTO pedido) {
+    public int save(PedidoDTO pedido) throws Exception {
         int cpedido = 0;
        
-        // @TODO insere pedido
+        PreparedStatement ps = connection.prepareStatement(
+            "INSERT INTO PEDIDO VALUES (?, ?) returning "
+        );
+        ps.setString(1, pedido.getCpf().getCpf());
+        ps.setTimestamp(
+            2,
+            new Timestamp(pedido.getData().getTime())
+        );
+
+        // @TODO descobrir como retornar o id de forma performática e segura
+        //ResultSet rs = ps.executeQuery();
+        //rs.close();
+        
+        ps.close();
        
         return cpedido;
         
