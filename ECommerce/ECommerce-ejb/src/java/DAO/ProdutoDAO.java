@@ -18,6 +18,10 @@ public class ProdutoDAO {
         connection = ConnectionUtil.getConnection();
     }
     
+    public void save(ProdutoDTO produto) throws Exception {
+        // @TODO implementar
+    }
+    
     public ProdutoDTO findById(int cproduto) throws Exception {
         ProdutoDTO produto = null;
 
