@@ -19,7 +19,7 @@ public class PedidoDAO {
     }
     
     public int save(PedidoDTO pedido) throws Exception {
-        int cpedido = 0;
+        int cpedido = 1;
        
         PreparedStatement ps = connection.prepareStatement(
             "INSERT INTO PEDIDO VALUES (?, ?) returning "

@@ -5,6 +5,7 @@
  */
 package beans;
 
+import DTO.SubcategoriaProdutoDTO;
 import javax.ejb.Remote;
 
 /**
@@ -13,5 +14,5 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface RegistraProdutoBeanRemote {
-    
+     public boolean registraProduto(SubcategoriaProdutoDTO subcategoriaProduto);
 }

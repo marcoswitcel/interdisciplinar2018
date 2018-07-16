@@ -8,6 +8,7 @@ import DTO.ClienteDTO;
 import DTO.PedidoDTO;
 import DTO.ProdutoDTO;
 import DTO.ProdutoPedidoDTO;
+import beans.RegistraCompraBeanRemote;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,7 +20,7 @@ import javax.ejb.Stateless;
  */
 
 @Stateless
-public class RegistraCompraBean implements RegistraCompraBeanLocal {
+public class RegistraCompraBean implements RegistraCompraBeanLocal, RegistraCompraBeanRemote {
     /**
      * EJB responsável por cadastrar uma compra.
      * Ele valida e os dados mandados e insere.
@@ -68,6 +69,8 @@ public class RegistraCompraBean implements RegistraCompraBeanLocal {
             
             ProdutoPedidoDAO produtoPedidoDAO = new ProdutoPedidoDAO();
             for (ProdutoPedidoDTO produtoPedidoDTO : produtos) {
+                // Busco o produto no banco para registrar o desconto e o preço
+                // correto. A quantidade vem do front
                 ProdutoDTO produtoDTO = produtoDAO.findById(produtoPedidoDTO.getCproduto().getCproduto());
                 produtoPedidoDTO.setCpedido(pedidoDTO);
                 produtoPedidoDTO.setDesconto(produtoDTO.getDesconto());
