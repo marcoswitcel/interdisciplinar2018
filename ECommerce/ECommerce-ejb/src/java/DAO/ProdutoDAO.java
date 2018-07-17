@@ -19,7 +19,19 @@ public class ProdutoDAO {
     }
     
     public void save(ProdutoDTO produto) throws Exception {
-        // @TODO implementar
+        PreparedStatement ps = connection.prepareStatement(
+            "INSERT INTO PRODUTO "
+                +"(imagem, preco, caracteristicas, desconto, quantidade, cmarca) "
+                +" VALUES (?, ? )"
+        );
+        ps.setString(1, produto.getImagem());
+        ps.setDouble(2, produto.getPreco());
+	ps.setString(3, produto.getCaracteristicas());
+	ps.setDouble(4, produto.getDesconto());
+	ps.setInt(5, produto.getQuantidade());
+	ps.setInt(6, produto.getCmarca().getCmarca());
+
+        ps.execute();
     }
     
     public ProdutoDTO findById(int cproduto) throws Exception {

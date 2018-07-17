@@ -15,7 +15,8 @@ public class ConnectionUtil {
         try {
             ctx = new InitialContext();
             // @TODO configurar pool
-            DataSource ds = (DataSource) ctx.lookup("jdbc/bestcard-poll");
+            // Criado mas não funcionando
+            DataSource ds = (DataSource) ctx.lookup("jdbc/ecommerce-poll");
             con = ds.getConnection();
         } catch(NamingException | SQLException ex) {
             throw new Exception("Erro de conexão ao banco de dados! Verifique o log do aplicativo.", ex);
