@@ -3,14 +3,14 @@ package DTO;
 import java.io.Serializable;
 
 public class SubcategoriaProdutoDTO implements Serializable {
-    private Subcategoria csubcategoria;
+    private SubcategoriaDTO csubcategoria;
     private ProdutoDTO cproduto;
 
-    public Subcategoria getCsubcategoria() {
+    public SubcategoriaDTO getCsubcategoria() {
         return csubcategoria;
     }
 
-    public void setCsubcategoria(Subcategoria csubcategoria) {
+    public void setCsubcategoria(SubcategoriaDTO csubcategoria) {
         this.csubcategoria = csubcategoria;
     }
 

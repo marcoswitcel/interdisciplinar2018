@@ -6,8 +6,10 @@
 package beans;
 
 import DAO.ProdutoDAO;
+import DAO.SubcategoriaDAO;
 import DAO.SubcategoriaProdutoDAO;
 import DTO.ProdutoDTO;
+import DTO.SubcategoriaDTO;
 import DTO.SubcategoriaProdutoDTO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +24,6 @@ public class RegistraProdutoBean implements RegistraProdutoBeanRemote, RegistraP
 
     public boolean registraProduto(SubcategoriaProdutoDTO subcategoriaProduto) {
         boolean cadastrado = false;
-
         
         registrando :
         try {
@@ -31,10 +32,9 @@ public class RegistraProdutoBean implements RegistraProdutoBeanRemote, RegistraP
             subcategoriaProdutoDAO = new SubcategoriaProdutoDAO();
             
             ProdutoDTO produto = subcategoriaProduto.getCproduto();
-            
-            if (validaProduto(produto)) {
-                // @TODO validar se a categoria existe
-            } else {
+            SubcategoriaDTO subcategoria = subcategoriaProduto.getCsubcategoria();
+                  
+            if (!produtoValido(produto) || !subcategoriaValida(subcategoria)) {
                 break registrando;
             }
             
@@ -49,7 +49,7 @@ public class RegistraProdutoBean implements RegistraProdutoBeanRemote, RegistraP
         return cadastrado;
     }
     
-    private boolean validaProduto(ProdutoDTO produto) {
+    private boolean produtoValido(ProdutoDTO produto) {
         // Valida se todos os campos são dirente de null
         // e outras regras podem ser adicionadas aqui
         // cproduto é desconsiderado
@@ -61,5 +61,13 @@ public class RegistraProdutoBean implements RegistraProdutoBeanRemote, RegistraP
             produto.getCmarca() != null &&
             produto.getCmarca().getCmarca() != 0
         );
+    }
+    
+    private boolean subcategoriaValida(SubcategoriaDTO subcategoria) throws Exception {
+        if (subcategoria == null ) return false;
+        
+        SubcategoriaDAO subcategoriaDAO = new SubcategoriaDAO();
+        
+        return (subcategoriaDAO.findById(subcategoria.getCsubcategoria()) != null);
     }
 }

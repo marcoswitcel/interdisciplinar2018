@@ -2,7 +2,7 @@ package DTO;
 
 import java.io.Serializable;
 
-public class Subcategoria implements Serializable {
+public class SubcategoriaDTO implements Serializable {
     private int csubcategoria;
     private CategoriaDTO ccategoria;
     private String nome;

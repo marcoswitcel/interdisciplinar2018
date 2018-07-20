@@ -21,7 +21,13 @@ public class SubcategoriaProdutoDAO {
         connection = ConnectionUtil.getConnection();
     }
     
-    public void save(SubcategoriaProdutoDTO ubcategoriaProduto) throws Exception {
-        // @TODO implementar
+    public void save(SubcategoriaProdutoDTO subcategoriaProduto) throws Exception {
+        PreparedStatement ps = connection.prepareStatement(
+            "INSERT INTO SUBCATEGORIAPRODUTO VALUES (?, ?)"
+        );
+        ps.setInt(1, subcategoriaProduto.getCsubcategoria().getCsubcategoria());
+        ps.setInt(2, subcategoriaProduto.getCproduto().getCproduto());
+        
+        ps.execute();
     }
 }
