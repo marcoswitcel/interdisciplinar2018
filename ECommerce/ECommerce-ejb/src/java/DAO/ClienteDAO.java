@@ -1,6 +1,7 @@
 package DAO;
 
 import DTO.ClienteDTO;
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,6 +54,29 @@ public class ClienteDAO {
             "SELECT * FROM CLIENTE WHERE CPF = ?"
         );
         ps.setInt(1, cpf);
+        
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            cliente = new ClienteDTO();
+            cliente.setCpf(rs.getString("CPF"));
+            cliente.setCep(rs.getString("CEP"));
+            cliente.setRua(rs.getString("RUA"));
+            cliente.setNumero(rs.getInt("NUMERO"));
+        }
+        
+        rs.close();
+        
+        return cliente;
+    }
+    
+    public ClienteDTO findByCPF(BigInteger cpf) throws Exception {
+        ClienteDTO cliente = null;
+
+        PreparedStatement ps = connection.prepareStatement(
+            "SELECT * FROM CLIENTE WHERE CPF = ?"
+        );
+        ps.setString(1, cpf.toString());
         
         ResultSet rs = ps.executeQuery();
         

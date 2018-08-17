@@ -22,7 +22,7 @@ public class PedidoDAO {
         int cpedido = 1;
        
         PreparedStatement ps = connection.prepareStatement(
-            "INSERT INTO PEDIDO VALUES (?, ?) returning "
+            "INSERT INTO PEDIDO VALUES (?, ?)"
         );
         ps.setString(1, pedido.getCpf().getCpf());
         ps.setTimestamp(

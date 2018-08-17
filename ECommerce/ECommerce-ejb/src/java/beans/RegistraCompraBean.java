@@ -9,6 +9,7 @@ import DTO.PedidoDTO;
 import DTO.ProdutoDTO;
 import DTO.ProdutoPedidoDTO;
 import beans.RegistraCompraBeanRemote;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,7 +34,7 @@ public class RegistraCompraBean implements RegistraCompraBeanLocal, RegistraComp
             // Gerencia Cliente
             ClienteDAO clienteDAO = new ClienteDAO();
             // Se houver erro de parse retorna false também
-            ClienteDTO clienteNoBanco = clienteDAO.findById(Integer.parseInt(cliente.getCpf()));
+            ClienteDTO clienteNoBanco = clienteDAO.findByCPF(new BigInteger(cliente.getCpf()));
             
             boolean existe = (clienteNoBanco != null);
             
