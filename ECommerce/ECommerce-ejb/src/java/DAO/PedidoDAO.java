@@ -19,21 +19,23 @@ public class PedidoDAO {
     }
     
     public int save(PedidoDTO pedido) throws Exception {
-        int cpedido = 1;
+        int cpedido = 0;
        
         PreparedStatement ps = connection.prepareStatement(
-            "INSERT INTO PEDIDO VALUES (?, ?)"
+            "EXECUTE PROCEDURE ID_NOVO_PEDIDO(?, ?)"
         );
         ps.setString(1, pedido.getCpf().getCpf());
         ps.setTimestamp(
             2,
             new Timestamp(pedido.getData().getTime())
         );
-
-        // @TODO descobrir como retornar o id de forma performática e segura
-        //ResultSet rs = ps.executeQuery();
-        //rs.close();
+        ResultSet rs = ps.executeQuery();
         
+        if (rs.next()) {
+            cpedido = rs.getInt("CPEDIDO");
+        }
+        
+        rs.close();
         ps.close();
        
         return cpedido;

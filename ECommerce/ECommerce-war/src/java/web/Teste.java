@@ -51,9 +51,9 @@ public class Teste extends HttpServlet {
             out.println("<h1>Servlet Teste at " + request.getContextPath() + "</h1>");
             
             ClienteDTO cliente = new ClienteDTO();
-            cliente.setCpf("12345678912345");
-            cliente.setCep("12345678");
-            cliente.setRua("Rua do Teste");
+            cliente.setCpf("12345678912349");
+            cliente.setCep("12345679");
+            cliente.setRua("Rua do Teste2");
             cliente.setNumero(22);
             
             List<ProdutoPedidoDTO> produtos = new ArrayList<ProdutoPedidoDTO>();
@@ -68,6 +68,7 @@ public class Teste extends HttpServlet {
             
             bean.registraCompra(cliente, produtos);
             
+            out.println("passei o EJB");
             out.println("</body>");
             out.println("</html>");
         }
