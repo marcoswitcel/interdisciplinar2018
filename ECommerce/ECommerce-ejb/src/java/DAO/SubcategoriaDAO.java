@@ -29,8 +29,7 @@ public class SubcategoriaDAO {
         
         if (rs.next()) {
             subcategoria = new SubcategoriaDTO();
-            // @TODO se for realmente usar esse findById para criar objetos
-            // Termine de implementar
+            // @TODO Termine de implementar
         }
         
         rs.close();

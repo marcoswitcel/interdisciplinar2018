@@ -70,8 +70,8 @@ public class RegistraCompraBean implements RegistraCompraBeanLocal, RegistraComp
             
             ProdutoPedidoDAO produtoPedidoDAO = new ProdutoPedidoDAO();
             for (ProdutoPedidoDTO produtoPedidoDTO : produtos) {
-                // Busco o produto no banco para registrar o desconto e o preço
-                // correto. A quantidade vem do front
+                // Busco o produto no banco para usar o desconto e o preço
+                // vigente. Só pego a quantidade do front.
                 ProdutoDTO produtoDTO = produtoDAO.findById(produtoPedidoDTO.getCproduto().getCproduto());
                 produtoPedidoDTO.setCpedido(pedidoDTO);
                 produtoPedidoDTO.setDesconto(produtoDTO.getDesconto());

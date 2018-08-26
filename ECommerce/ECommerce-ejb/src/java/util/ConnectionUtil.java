@@ -16,8 +16,6 @@ public class ConnectionUtil {
         
         try {
             ctx = new InitialContext();
-            // @TODO configurar pool
-            // Criado mas não funcionando
             DataSource ds = (DataSource) ctx.lookup("jdbc/ecommerce-poll");
             con = ds.getConnection();
         } catch(NamingException | SQLException ex) {
